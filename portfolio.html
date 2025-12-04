@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>PULSEKINESIS</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <meta property="og:url" content="">
+        <meta property="og:site_name" content="PULSEKINESIS">
+        <meta property="og:title" content="PULSEKINESIS">
+        <meta property="og:locale" content="en">
+        <meta property="og:type" content="website">
+        <meta name="author" content="pulsekinesis">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap" rel="stylesheet">
+        <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@v0.181.2/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.181.2/examples/jsm/"
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <!-- overlay -->
+        <div class="background-info" id="infobox" style="display:none">
+            <!--https://tr.rbxcdn.com/180DAY-12cb4ca613fc87a573bb139ade98688c/420/420/Image/Png/noFilter-->
+            <div class="content">
+                <img id="gameicon" src="https://tr.rbxcdn.com/180DAY-12cb4ca613fc87a573bb139ade98688c/420/420/Image/Png/noFilter" style="float:left; width: 205px; height: 205px; margin-right: 10px;  border: 1px solid #ffffff;">
+                <h1 id="title">TITLE</h1>
+                <h4 id="desc">DESC DESC DESC DESC DESC DESC DESC DESC DESC DESC </h4>
+                <br/>
+                <a class="linkurl" target="_blank" href="#!" id="link">Open Game</a>
+                <a class="linkurl" href="#!" id="closebutton">Close</a>
+            </div>
+        </div>
+        <header>
+            <ul class="main-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#!" class="active">Portfolio</a></li>
+                <li style="float:right;">
+                    <a href="https://www.roblox.com/users/10207619/profile" target="_blank" class="float-right">
+                        <svg class="niftybutton-rbx" data-donate="true" data-tag="rbx" data-name="Roblox" preserveAspectRatio="xMidYMid meet" width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.926 23.998 0 18.892 5.075.002 24 5.108ZM15.348 10.09l-5.282-1.453-1.414 5.273 5.282 1.453z" ></path></svg>
+                    </a>
+                </li>
+                <li style="float:right; margin-right: 15px;">
+                    <a href="https://x.com/pulsekinesis" target="_blank" class="float-right" style="margin-top:4px">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1200 1220">
+                            <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="white"/>
+                        </svg>
+                    </a>
+                </li>
+                <li style="float:right; margin-right: 15px;">
+                    <a href="mailto:pulsekinesis@gmail.com" target="_blank" class="float-right">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M13.718 10.528c0 .792-.268 1.829-.684 2.642-1.009 1.98-3.063 1.967-3.063-.14 0-.786.27-1.799.687-2.58 1.021-1.925 3.06-1.624 3.06.078zm10.282 1.472c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-5-1.194c0-3.246-2.631-5.601-6.256-5.601-4.967 0-7.744 3.149-7.744 7.073 0 3.672 2.467 6.517 7.024 6.517 2.52 0 4.124-.726 5.122-1.288l-.687-.991c-1.022.593-2.251 1.136-4.256 1.136-3.429 0-5.733-2.199-5.733-5.473 0-5.714 6.401-6.758 9.214-5.071 2.624 1.642 2.524 5.578.582 7.083-1.034.826-2.199.799-1.821-.756 0 0 1.212-4.489 1.354-4.975h-1.364l-.271.952c-.278-.785-.943-1.295-1.911-1.295-2.018 0-3.722 2.19-3.722 4.783 0 1.73.913 2.804 2.38 2.804 1.283 0 1.95-.726 2.364-1.373-.3 2.898 5.725 1.557 5.725-3.525z"/></svg>
+                    </a>
+                </li>
+            </ul>
+            <br/>
+            <h1>PORTFOLIO</h1>
+            <hr/>
+        </header>
+        <main>
+            <h1 style="text-align: center; text-decoration: underline; padding-bottom: 5px;">Current Projects</h1>
+            <div id="gallery-container-main" style="display: flex; margin: 0 auto; justify-content: center; width: 50%; flex-wrap: wrap;"></div>
+            <br/>
+            <h1 style="text-align: center; text-decoration: underline; padding-bottom: 5px;">Previous Projects</h1>
+            <div id="gallery-container-old" style="display: flex; margin: 0 auto; justify-content: center; width: 50%; flex-wrap: wrap;"></div>
+            
+        </main>
+        <script src="js/icons.js"></script>
+    </body>
+</html>
