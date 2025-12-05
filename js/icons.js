@@ -151,4 +151,9 @@ async function displayIcons() {
 closeButton.addEventListener('click', function () {
     infoBox.style.display = 'none';
 })
+
+linkButton.addEventListener('click', function () {
+    infoBox.style.display = 'none';
+})
+
 displayIcons();
