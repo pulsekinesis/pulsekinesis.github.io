@@ -4,19 +4,29 @@ const universeIds = [
         nameOf: "Guts & Blackpowder",
         desc: "I've handled programming, game design, models, and the UI for this game. It's my favorite game ever.",
         url: "https://www.roblox.com/games/12334109280/",
+        altImageIcon: "http://pulsekinesis.com/images/logo.png",
     },
     {
         id: 3813107352,
         nameOf: "Bombline",
         desc: "I've assisted in programming during the pre-alpha phase of this game, and also contributed heavily towards the game's style.",
         url: "https://www.roblox.com/games/10469988463/",
+        altImageIcon: "http://pulsekinesis.com/images/logo.png",
     },
     {
         id: 7264587281,
         nameOf: "Sniper Duels",
         desc: "I'm an investor for this game.",
         url: "https://www.roblox.com/games/109397169461300/",
+        altImageIcon: "http://pulsekinesis.com/images/logo.png",
     },
+    {
+        id: -1,
+        nameOf: "X View Images",
+        desc: "Back in the day, there was this Chrome extension someone made that allowed users to download the original image of a given X post. I'm deciding to continue it since the original creator has taken down the project.",
+        url: "https://github.com/pulsekinesis/X-View-Original-Images",
+        altImageIcon: "http://pulsekinesis.com/images/x_img_logo.png",
+    }
 ]
 
 const previouslyWorkedOn = [
@@ -25,24 +35,28 @@ const previouslyWorkedOn = [
         nameOf: "Brickbattle Brawl",
         desc: "This was my first serious game project ever. While its age does show, it's still something I'm proud of.",
         url: "https://www.roblox.com/games/6061920912/",
+        altImageIcon: "http://pulsekinesis.com/images/logo.png",
     },
     {
         id: 865128420,
         nameOf: "Kiseki CTF+",
         desc: "This was my second serious game project. It's based off of clockwork and conix's game of the same name (although it's called CTF instead of CTF+).",
         url: "https://www.roblox.com/games/2451668070/",
+        altImageIcon: "http://pulsekinesis.com/images/logo.png",
     },
     {
         id: 1955709044,
         nameOf: "The Undead Coming",
         desc: "This was my first big project that I've done on behalf of someone else. While in hindsight the project was a mess, it's still my baby.",
         url: "https://www.roblox.com/games/5596726628/",
+        altImageIcon: "http://pulsekinesis.com/images/logo.png",
     },
     {
         id: 3192586864,
         nameOf: "Untitled Fight Game",
         desc: "After The Undead Coming, I decided to work on this game. It's a simple sandbox melee combat game.",
         url: "https://www.roblox.com/games/8343174537/",
+        altImageIcon: "http://pulsekinesis.com/images/logo.png",
     },
 ]
 
@@ -55,10 +69,19 @@ const iconBox = document.getElementById('gameicon');
 const closeButton = document.getElementById('closebutton');
 const linkButton = document.getElementById('link');
 
-async function fetchGameIconUrl(universeId, universeName, description, gameUrl) {
+async function fetchGameIconUrl(universeId, universeName, description, gameUrl, altImageIcon) {
     const url = `https://thumbnails.roproxy.com/v1/games/icons?universeIds=${universeId}&size=420x420&format=Png&isCircular=false`;
 
     try {
+        if (universeId == -1) {
+            return {
+                url: altImageIcon,
+                nameOf: universeName,
+                desc: description,
+                gameUrl: gameUrl,
+                isAltUrl: true,
+            };
+        }
         const response = await fetch(url);
 
         if (!response.ok) throw new Error(`Http error: ${response.status}`);
@@ -70,6 +93,7 @@ async function fetchGameIconUrl(universeId, universeName, description, gameUrl) 
                 nameOf: universeName,
                 desc: description,
                 gameUrl: gameUrl,
+                isAltUrl: false,
             };
         }
         console.warn(`No icon found for Universe ID: ${universeId}`);
@@ -82,7 +106,7 @@ async function fetchGameIconUrl(universeId, universeName, description, gameUrl) 
 
 async function displayIcons() {
     for (const universeData of universeIds) {
-        const imageUrl = await fetchGameIconUrl(universeData.id, universeData.nameOf, universeData.desc, universeData.url);
+        const imageUrl = await fetchGameIconUrl(universeData.id, universeData.nameOf, universeData.desc, universeData.url, universeData.altImageIcon);
 
         if (imageUrl) {
             const innerGallery = document.createElement("div");
@@ -106,6 +130,9 @@ async function displayIcons() {
                 titleBox.textContent = imageUrl.nameOf;
                 linkButton.href = imageUrl.gameUrl;
                 infoBox.style.display = 'flex';
+                if (imageUrl.isAltUrl) {
+                    linkButton.textContent = "Open Url"
+                } else { linkButton.textContent = "Open Game" }
             })
             gallery.appendChild(imgElement);
             gallery.appendChild(desc);
@@ -114,7 +141,7 @@ async function displayIcons() {
         }
     }
     for (const universeData of previouslyWorkedOn) {
-        const imageUrl = await fetchGameIconUrl(universeData.id, universeData.nameOf, universeData.desc, universeData.url);
+        const imageUrl = await fetchGameIconUrl(universeData.id, universeData.nameOf, universeData.desc, universeData.url, universeData.altImageIcon);
 
         if (imageUrl) {
             const innerGallery = document.createElement("div");
@@ -155,5 +182,4 @@ closeButton.addEventListener('click', function () {
 linkButton.addEventListener('click', function () {
     infoBox.style.display = 'none';
 })
-
 displayIcons();
