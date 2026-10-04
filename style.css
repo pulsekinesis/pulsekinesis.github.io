@@ -1,9 +1,200 @@
+@font-face {
+    font-family: 'Cilantro';
+    src: url('./fonts/cilantro.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cilantro-bold';
+    src: url('./fonts/cilantroBold.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+}      
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes spin-border {
+    to {
+        --angle: 360deg;
+    } 
+}
 body {
     margin: 0;
-    font-family: "PT Serif", sans-serif;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+
+    font-family: "Cilantro", sans-serif;
     background-color: #05050c;
     color: white;
     text-align: center;
+}
+
+main {
+    opacity: 0;
+}
+
+main.visible {
+    opacity: 1;
+    transition: opacity 1.25s ease-in-out 0.25s;
+}
+
+.backg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: block;  
+}
+
+.centered-box {
+    /* outline: 1px solid transparent; */
+    padding: 10px;
+    width: 40px;
+    margin: 5px;
+    align-items: center;   
+
+    border: 1px solid transparent;
+    background-image: 
+        linear-gradient(#05050c, #05050c), 
+        conic-gradient(from var(--angle), #2839fd, #1f288d, #2839fd);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  
+    /* Attach the loop animation */
+    animation: spin-border 6s linear infinite;
+    transition: border 0.2s ease-out;
+}
+
+.centered-box:hover {
+    border: 2px solid transparent;
+}
+
+.centered-box img {
+    height: 40px;
+    width: 40px;
+}
+
+.btn-list {
+    width: 500px;
+    justify-content: center;
+    display: flex;
+}
+
+.btn-list hr {
+    border: none; 
+    margin: 10px;
+    margin-top: 35px;
+    border-top: 2px dotted #2839fd;
+    width: 10%;
+    height: 4px;
+    
+    background-image: linear-gradient(90deg, #2839fd, #1f288d);
+    background-size: 200% 100%;
+    animation: gradientMove 3s linear infinite;
+
+    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 35%);
+    -webkit-mask-size: 5px 5px; 
+
+    mask-image: radial-gradient(circle, black 30%, transparent 35%);
+    mask-size: 5px 5px;
+}
+
+.info-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    /* Closed state */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.info-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.25s ease, visibility 0s;
+}
+
+.info-content {
+    position: relative;
+    background: #05050c;
+    padding: 10px;
+    border-radius: 4px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+
+    /* Closed state: slightly smaller and lower */
+    transform: translateY(20px) scale(1);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    
+    border: 1px solid transparent;
+    background-image: 
+        linear-gradient(#0d0b1d, #0d0b1d), 
+        conic-gradient(from var(--angle), #2839fd, #1f288d, #2839fd);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  
+    /* Attach the loop animation */
+    animation: spin-border 6s linear infinite;
+}
+
+.info-content h2 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.info-overlay.open .info-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.info-content hr {
+    width: 75%;
+    border: none;
+    border-top: 2px dotted #ffffff;
+}
+
+#info-close {
+    color: white;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+    /* Turn off animation for people who have reduced motion enabled */
+@media (prefers-reduced-motion: reduce) {
+    .info-overlay,
+    .info-content {
+        transition: none;
+    }
 }
 
 code {
@@ -14,18 +205,41 @@ code {
     padding-right: 5px;
 }
 
-h1 {
+b {
+    font-family: "Cilantro-bold", sans-serif;
+}
+
+h1, h2 {
+    font-family: "Cilantro-bold", sans-serif;
     margin: 0;
     padding: 0;
 }
 
-h3 {
+.website-title {
+    font-family: "Cilantro-bold", sans-serif;
     margin: 0;
     padding: 0;
-    font-weight: 400;
+
+    text-shadow: 
+        0 0 7px #ffffff90,
+        0 0 10px #ffffff90,
+        0 0 21px #0037ff90,  /* Cyan core glow */
+        0 0 42px #0037ff90,
+        0 0 82px #0037ff90,  /* Outermost broad halo */
+        0 0 92px #0037ff90;
 }
 
-h4 {
+.pronounce {
+    font-size: small;
+    font-style: italic;
+    color: #7f7f7f;
+    opacity: 0.8;
+    margin-block-start: 0;
+    margin-block-end: 5px;
+}
+
+h3, h4 {
+    font-family: "Cilantro-bold", sans-serif;
     margin: 0;
     padding: 0;
     font-weight: 400;
@@ -174,9 +388,10 @@ svg {
 
 .background-info {
     background: hsla(0, 0%, 0%, 0.9); 
+    inset: 0;
     width: 100%;
     height: 100%; 
-    z-index: 10;
+    z-index: 1001;
     display: flex;
     justify-content: center; /* Centers horizontally */
     align-items: center; /* Centers vertically */
@@ -187,10 +402,19 @@ svg {
 
 .background-info .content {
     max-width: 568px;
-    width: 35%;
-    background: rgb(31 35 49);
-    border: 1px solid rgb(255, 255, 255);
+    min-width: 504px;
+    width: 50%;
     padding: 10px;
+
+    border: 1px solid transparent;
+    background-image: 
+        linear-gradient(#0c0c0d, #0c0c0d), 
+        conic-gradient(from var(--angle), #fefeff, #e0e0e0, #fefeff);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  
+    /* Attach the loop animation */
+    animation: spin-border 6s linear infinite;
 }
 
 .background-info h1 {
@@ -203,18 +427,30 @@ svg {
 
 a {
     color: white;
+    text-decoration: underline !important;
 }
 
 a:visited {
-  color: inherit; /* Or any other desired color */
+    color: inherit; 
+}
+
+a:hover {
+    font-family: 'Cilantro-bold', sans-serif;
+}
+
+.background-info h4 {
+    font-family: 'Cilantro', sans-serif;
 }
 
 .background-info .linkurl {
     text-align: center;
     font-weight: bold;
+    text-decoration: none !important;
     background-color: #0092e6;
     padding-left: 5%;
     padding-right: 5%;
+    font-size: 20px;
+    padding-bottom: 2px;
     border-radius: 2px;
     text-transform: uppercase;
 }
@@ -222,7 +458,6 @@ a:visited {
 a,
 a:link,
 a:visited,
-a:hover,
 a:active {
   text-decoration: none;
 }
@@ -246,3 +481,9 @@ a:active {
         text-shadow: 0 0 2px #fff, 0 0 2px #4dbeff, 0 0 2px #4dbeff, 0 0 3px #4dbeff, 0 0 4px #4dbeff, 0 0 5px #4dbeff, 0 0 6px #4dbeff;
     }
 }
+
+/* @media (max-width: 500px) {
+    main {
+        scale: 2;
+    }
+} */
