@@ -1,12 +1,5 @@
 // render.js
-// @pulsekinesis
-//
-// Markdown -> HTML, the post page template and the RSS feeds.
-// Only the editor loads this file (it needs marked + highlight.js on the page).
-// Readers never download it: every post is saved as a finished HTML page.
 
-// Bump this when blog.css / blog.js change, then use "Rebuild all pages" in the
-// editor so every post points at the new files instead of a cached copy.
 export const ASSET_VERSION = "1";
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July",
@@ -104,14 +97,6 @@ function absoluteUrl(v, base) {
 }
 
 // ------------------------------------------------------------ front matter --
-//
-// ---
-// title: "My post"
-// date: "2026-10-05T14:30:00-05:00"
-// categories: ["programming", "gaming"]
-// banner: "media/banner.png"
-// ---
-// Values are JSON, but plain YAML-ish values (title: My post, categories: [a, b]) work too.
 
 export function parsePost(src) {
     src = String(src ?? "").replace(/\r\n?/g, "\n");
@@ -149,12 +134,6 @@ export function serializePost(meta, body) {
 }
 
 // --------------------------------------------------------------- markdown --
-//
-// Extra syntax on top of GitHub-flavored markdown (each on its own line):
-//   !audio[Song title](media/song.mp3){artist="Someone" cover="media/cover.png" loop}
-//   !video[Caption](media/clip.mp4){poster="media/poster.png" loop muted autoplay}
-//   !youtube[Caption](https://youtu.be/VIDEO_ID){start=30}
-// Code fences can carry a file name:  ```lua title="Gun.lua"
 
 const MEDIA_RE = /^!(audio|video|youtube)\[([^\]\n]*)\]\(\s*<?([^)\s>]+)>?\s*\)(?:\{([^}\n]*)\})?[ \t]*(?:\n+|$)/;
 
@@ -250,13 +229,6 @@ function mediaFeed({ kind, label, src, attrs }) {
     return `<p><a href="${watch}"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="${e(label || "YouTube video")}"></a><br><a href="${watch}">▶ ${e(label || "Watch on YouTube")}</a></p>\n`;
 }
 
-/**
- * Render markdown.
- *   mode:    "page" (the blog) or "feed" (RSS readers: no scripts, absolute URLs)
- *   base:    rewrite relative URLs against this absolute URL
- *   resolve: (url) => replacement | undefined, checked before `base`
- *            (the editor uses it to show media that hasn't been saved yet)
- */
 export function renderMarkdown(md, { mode = "page", base = "", resolve = null, siteOrigin = "" } = {}) {
     setup();
     const feed = mode === "feed";
@@ -304,8 +276,6 @@ function postProcess(html, { feed, base, resolve, siteOrigin }) {
     tpl.innerHTML = html;
     const root = tpl.content;
 
-    // A paragraph holding just an image (optionally wrapped in a link) becomes a figure.
-    // The image title becomes the caption:  ![alt](media/pic.png "Caption")
     for (const p of [...root.querySelectorAll("p")]) {
         const kids = [...p.childNodes].filter((n) => !(n.nodeType === 3 && !n.textContent.trim()));
         if (kids.length !== 1) continue;
@@ -393,14 +363,12 @@ export function autoSummary(html, max = 220) {
 
 const RSS_ICON = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="5" cy="19" r="2.2"/><path d="M3 10.5A10.5 10.5 0 0 1 13.5 21h-3A7.5 7.5 0 0 0 3 13.5z"/><path d="M3 4a17 17 0 0 1 17 17h-3A14 14 0 0 0 3 7z"/></svg>`;
 
-// Keep in sync with the copies in blog/index.html, archive/ and feedback/.
 export function siteHeader(active = "") {
     const cls = (k) => (k === active ? ` class="active" aria-current="page"` : "");
     return `<header class="site-header">
     <a class="brand" href="/blog/"><span class="website-title">pulsekinesis</span><span class="brand-sub">blog</span></a>
     <p class="pronounce">(PULS·kih·NEE·sis)</p>
     <nav class="main-menu" aria-label="Main">
-        <a href="/">Home</a>
         <a href="/blog/"${cls("blog")}>Blog</a>
         <a href="/blog/archive/"${cls("archive")}>Archive</a>
         <a href="/blog/feedback/"${cls("feedback")}>Feedback</a>
@@ -420,11 +388,6 @@ function inlineSafe(code, tag) {
     return String(code ?? "").replace(new RegExp(`</(${tag})`, "gi"), "<\\/$1");
 }
 
-/**
- * The full HTML page for one post.
- *   css/js:  the post's custom code. With inline=true it's embedded (editor preview),
- *            otherwise the page links post.css / post.js next to it.
- */
 export function postPage({ site, slug, meta, html, minutes, css = "", js = "", inline = false, baseHref = "" }) {
     const url = `${site.url}/blog/posts/${slug}/`;
     const title = meta.title || "Untitled";
