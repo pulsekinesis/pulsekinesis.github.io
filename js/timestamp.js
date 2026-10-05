@@ -2,6 +2,8 @@
 // @pulsekinesis
 
 document.addEventListener("infobox:open", (e) => {
+    if (document.getElementById("timestamp") == null) return;
+    
     const locale = navigator.language || "en-US";
 
     function updateCentralStandardTime() {
@@ -13,6 +15,7 @@ document.addEventListener("infobox:open", (e) => {
             second: "2-digit",
             timeZoneName: "short",
         })
+
         document.getElementById("timestamp").textContent = newTime;
     }
 
