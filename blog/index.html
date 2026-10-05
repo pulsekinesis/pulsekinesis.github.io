@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog · pulsekinesis</title>
+<meta name="description" content="Notes on programming, game design, retrocomputing, music and whatever else is on my mind.">
+<meta name="author" content="pulsekinesis">
+<link rel="canonical" href="https://pulsekinesis.com/blog/">
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="pulsekinesis blog" href="/blog/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pulsekinesis">
+<meta property="og:title" content="pulsekinesis · blog">
+<meta property="og:description" content="Notes on programming, game design, retrocomputing, music and whatever else is on my mind.">
+<meta property="og:url" content="https://pulsekinesis.com/blog/">
+<meta property="og:image" content="https://pulsekinesis.com/images/logo.png">
+<meta name="theme-color" content="#0008FF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/assets/blog.css?v=1">
+<link rel="stylesheet" href="/blog/assets/custom.css?v=1">
+</head>
+<body class="blog" data-page="home">
+<canvas id="bg-canvas" class="backg-canvas" aria-hidden="true"></canvas>
+<header class="site-header">
+    <a class="brand" href="/blog/"><span class="website-title">pulsekinesis</span><span class="brand-sub">blog</span></a>
+    <p class="pronounce">(PULS·kih·NEE·sis)</p>
+    <nav class="main-menu" aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/blog/" class="active" aria-current="page">Blog</a>
+        <a href="/blog/archive/">Archive</a>
+        <a href="/blog/feedback/">Feedback</a>
+        <a class="menu-rss" href="/blog/feed.xml" title="RSS feed" aria-label="RSS feed"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="5" cy="19" r="2.2"/><path d="M3 10.5A10.5 10.5 0 0 1 13.5 21h-3A7.5 7.5 0 0 0 3 13.5z"/><path d="M3 4a17 17 0 0 1 17 17h-3A14 14 0 0 0 3 7z"/></svg></a>
+    </nav>
+</header>
+<div class="layout">
+    <main class="content" id="main">
+        <section class="intro panel" id="intro" aria-label="Introduction"></section>
+
+        <section aria-labelledby="projects-title">
+            <h2 class="section-title" id="projects-title">Highlighted Projects</h2>
+            <div class="projects-grid" id="projects"></div>
+        </section>
+
+        <section aria-labelledby="recent-title">
+            <h2 class="section-title" id="recent-title">Recent Posts<a class="more" href="/blog/archive/">all posts →</a></h2>
+            <div class="post-list" id="recent"></div>
+        </section>
+    </main>
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+</div>
+<footer class="site-footer">
+    <hr class="dots">
+    <p>pulsekinesis · <a href="/">portfolio</a> · <a href="/blog/feed.xml">rss</a> · <a href="/blog/feedback/">feedback</a></p>
+</footer>
+<script src="/blog/assets/custom.js?v=1" defer></script>
+<script type="module" src="/blog/assets/blog.js?v=1"></script>
+</body>
+</html>

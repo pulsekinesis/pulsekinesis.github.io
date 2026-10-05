@@ -1,0 +1,9 @@
+/* custom.css
+ * Loaded on every blog page, after blog.css. Anything here wins over the
+ * built-in styles, and blog updates never touch this file.
+ *
+ * Examples:
+ *   :root { --accent: #ff2bd6; }                  recolor buttons and highlights
+ *   .widget-clock .clock-face { font-size: 32px; }
+ *   .backg-canvas { display: none; }             turn off the falling-glyph background
+ */
