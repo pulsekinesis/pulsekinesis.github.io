@@ -11,28 +11,7 @@
         <title>pulsekinesis blog</title>
         <link>https://pulsekinesis.com/blog/</link>
     </image>
-    <lastBuildDate>Mon, 05 Oct 2026 15:57:00 GMT</lastBuildDate>
-    <item>
-        <title>Hello, world</title>
-        <link>https://pulsekinesis.com/blog/posts/hello-world/</link>
-        <guid isPermaLink="true">https://pulsekinesis.com/blog/posts/hello-world/</guid>
-        <pubDate>Mon, 05 Oct 2026 15:57:00 GMT</pubDate>
-        <dc:creator>pulsekinesis</dc:creator>
-        <category>Thoughts</category>
-        <description>Welcome to the blog! This is where I'll write about the things I'm working on and thinking about: programming, game design, gaming, retrocomputing, music, language and culture.</description>
-        <content:encoded><![CDATA[<p><img src="https://pulsekinesis.com/blog/posts/hello-world/media/hello-world.jpg" alt="The words &quot;hello, world&quot; glowing over falling blue glyphs"></p>
-<p>Welcome to the blog! This is where I'll write about the things I'm working on and thinking about: programming, game design, gaming, retrocomputing, music, language and culture.</p>
-<h2>What to expect</h2>
-<ul>
-<li>Notes and behind-the-scenes bits from my projects</li>
-<li>Code, with syntax highlighting</li>
-<li>Music, including the occasional tracker module</li>
-<li>Whatever else is on my mind</li>
-</ul>
-<pre><code>print("hello, world")</code></pre>
-<h2>Staying in the loop</h2>
-<p>Add the <a href="https://pulsekinesis.com/blog/feed.xml">RSS feed</a> to your feed reader, or pick a single category from the <strong>Subscribe</strong> box. Questions or comments? Send them through the <a href="https://pulsekinesis.com/blog/feedback/">feedback page</a>.</p>
-]]></content:encoded>
-    </item>
+    <lastBuildDate>Mon, 05 Oct 2026 16:23:55 GMT</lastBuildDate>
+
 </channel>
 </rss>
