@@ -1,12 +1,4 @@
 // blog.js
-// @pulsekinesis
-//
-// Runs on every blog page: background rain, sidebar widgets, post lists, search,
-// the custom audio/video players, code copy buttons and the image lightbox.
-//
-// Hooks for your own code (see blog/docs/customizing.md):
-//   window.pkWidgets.myType = (widget, ctx, body) => { body.textContent = "hi"; };
-//   document.addEventListener("pkblog:ready", (e) => console.log(e.detail.posts));
 
 const SITE_JSON = "/blog/data/site.json";
 const POSTS_JSON = "/blog/data/posts.json";
@@ -89,8 +81,6 @@ async function copyText(text) {
         return ok;
     }
 }
-
-// Run <script> tags that arrived through innerHTML (they don't run on their own).
 function activateScripts(root) {
     for (const old of root.querySelectorAll("script")) {
         const s = document.createElement("script");
@@ -101,7 +91,6 @@ function activateScripts(root) {
 }
 
 // ------------------------------------------------------- background rain --
-// Same effect as the portfolio's js/bg.js.
 
 function startRain() {
     const canvas = document.getElementById("bg-canvas");
@@ -162,7 +151,6 @@ function postCard(post, site, { featured = false } = {}) {
 }
 
 // --------------------------------------------------------------- widgets --
-// Each widget gets (config from site.json, { site, posts }, body element).
 
 const builtInWidgets = {
     about(w, ctx, body) {
@@ -345,7 +333,6 @@ async function renderHome(site, posts) {
     }
 }
 
-// Roblox game icons, fetched the same way as the portfolio (one batched request).
 async function loadRobloxIcons(projects, wrap) {
     const ids = projects.map((p) => p.roblox_universe).filter(Boolean);
     if (!ids.length) return;
@@ -431,7 +418,6 @@ function renderArchive(site, posts) {
             return;
         }
 
-        // Group by year (keeps relevance order when searching).
         let html = "";
         let year = null;
         const grouped = !terms.length;
@@ -460,7 +446,6 @@ function renderArchive(site, posts) {
         q ? u.searchParams.set("q", q) : u.searchParams.delete("q");
         cat ? u.searchParams.set("category", cat) : u.searchParams.delete("category");
         history.replaceState(null, "", u);
-        // keep the sidebar search box and category chips in step
         const side = document.querySelector(".widget-search input");
         if (side) side.value = q;
         for (const a of document.querySelectorAll(".widget-categories .chip")) {
@@ -480,7 +465,7 @@ function renderArchive(site, posts) {
         update();
         syncUrl();
     });
-    // Clicking a category chip inside a result filters in place.
+    
     results.addEventListener("click", (ev) => {
         const a = ev.target.closest("a.chip");
         if (!a) return;
@@ -577,7 +562,6 @@ function setupFeedback(site) {
 }
 
 // -------------------------------------------------------------- enhancers --
-// These only need the HTML that's already on the page, so they run right away.
 
 const ICONS = {
     play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>',
@@ -596,7 +580,6 @@ function fmtTime(s) {
     return h ? `${h}:${String(m).padStart(2, "0")}:${sec}` : `${m}:${sec}`;
 }
 
-// A dotted slider. get() -> 0..1, set(0..1)
 function makeBar(bar, { get, set, label, step = 0.05 }) {
     bar.setAttribute("role", "slider");
     bar.setAttribute("tabindex", "0");
@@ -742,7 +725,6 @@ const Tracker = {
     },
 };
 
-// Looks enough like an <audio> element for the shared player UI to drive it.
 class TrackerMedia extends EventTarget {
     constructor(src, loop) {
         super();
@@ -894,7 +876,6 @@ function enhanceAudio(fig) {
         audio.addEventListener("waiting", () => { if (!audio.meta) status.textContent = "loading the tracker engine…"; });
         audio.addEventListener("loadedmetadata", () => {
             const m = audio.meta;
-            // Fill in the module's own title / artist when the post didn't give one.
             if (!fig.dataset.title && m.title) ui.querySelector(".pk-title").textContent = m.title;
             if (!artist && m.artist) {
                 ui.querySelector(".pk-title").insertAdjacentHTML("afterend", `<div class="pk-artist-line">${esc(m.artist)}</div>`);
@@ -913,8 +894,6 @@ function enhanceAudio(fig) {
     }
 }
 
-// Real frequency data for files on this site. Files on other sites can't be
-// analysed (the browser blocks it), so they get a gentle fake instead.
 function mediaElementAnalyser(audio) {
     let analyser = null;
     let tried = false;
@@ -939,7 +918,6 @@ function mediaElementAnalyser(audio) {
     };
 }
 
-// Bars behind the player.
 function visualizer(fig, audio, canvas, getAnalyser) {
     if (reducedMotion) return;
     const ctx = canvas.getContext("2d");
