@@ -505,6 +505,12 @@ a:active {
         width: 75%;
     }
 
+    .content {
+        margin-left: -13%;
+        min-width: 0;
+        width: 75%;
+    }
+
     .img-border-info {
         float: none;
     }
