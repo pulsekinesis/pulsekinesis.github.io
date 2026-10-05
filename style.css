@@ -469,6 +469,29 @@ a:active {
     border: 1px solid #ffffff;
 }
 
+.blog-text {
+    opacity: 0.5;
+    text-decoration: none !important;
+    font-family: "Cilantro", sans-serif !important;
+}
+
+.blog-text h4 {
+    font-family: "Cilantro", sans-serif !important;
+}
+
+.blog-text a {
+    text-decoration: none !important;
+    font-family: "Cilantro", sans-serif !important;
+}
+
+.blog-text a::before {
+    text-decoration: none !important;
+}
+
+.blog-text a:hover {
+    text-decoration: underline !important;
+}
+
 @keyframes imghover {
     from {
         border: 2px solid #ffffff;
