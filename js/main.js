@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const hoverText = document.getElementById("hover_text");
-    const defaultText = hoverText.textContent;
+    var defaultText = hoverText.textContent;
+    const mobileText = "Press to Start";
 
     const infoBox = document.getElementById("info-box");
     const infoBody = document.getElementById("info-body");
@@ -33,6 +34,27 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
     }
 
+    function handleResize() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        if (width <= 674) {
+            defaultText = mobileText;
+        } else {
+            defaultText = hoverText.textContent;
+        }
+
+        hoverText.textContent = defaultText;
+
+        document.querySelectorAll("#info-btn").forEach((btn) => {
+            if (width <= 674 & !btn.classList.contains("isMobile")) {
+                btn.classList.add("isMobile");
+            } else if (width > 674 & btn.classList.contains("isMobile")) {
+                btn.classList.remove("isMobile");
+            }
+        });
+    }
+
     document.querySelectorAll("#info-btn").forEach((btn) => {
         // Hover: show this button's data-hover text
         btn.addEventListener("mouseenter", () => {
@@ -40,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         btn.addEventListener("mouseleave", () => {
+            if (btn.classList.contains("isMobile")) return;
             hoverText.textContent = defaultText;
         });
 
@@ -74,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    window.addEventListener('resize', handleResize);
     document.addEventListener('touchmove', preventDefault, { passive: false });
 
     closeBtn.addEventListener("click", close);
@@ -81,4 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
 
     document.getElementById('core').classList.add('visible');
+
+    handleResize();
 });
