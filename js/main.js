@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     window.addEventListener('resize', handleResize);
-    document.addEventListener('touchmove', preventDefault, { passive: false });
 
     closeBtn.addEventListener("click", close);
     infoBox.addEventListener("click", (e) => { if (e.target === infoBox) close(); });
