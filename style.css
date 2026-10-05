@@ -31,7 +31,6 @@
 }
 body {
     margin: 0;
-    /* overflow: hidden; */
 
     display: flex;
     justify-content: center; 
@@ -463,6 +462,14 @@ a:active {
   text-decoration: none;
 }
 
+.img-border-info {
+    float: left; 
+    width: 205px; 
+    height: 205px; 
+    margin-right: 10px;  
+    border: 1px solid #ffffff;
+}
+
 @keyframes imghover {
     from {
         border: 2px solid #ffffff;
@@ -490,5 +497,15 @@ a:active {
     
     .info-overlay.open {
         max-width: 87%;
+    }
+
+    .background-info .content {
+        margin-left: -13%;
+        min-width: 0;
+        width: 75%;
+    }
+
+    .img-border-info {
+        float: none;
     }
 }
