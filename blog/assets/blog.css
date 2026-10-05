@@ -1,9 +1,4 @@
-/* blog.css
- * @pulsekinesis
- * Same look as the portfolio (style.css): spinning conic borders, glowing title,
- * dotted gradient rules, PT Serif menu, Cilantro text. Code uses Berkeley Mono.
- * Put your own tweaks in custom.css so they survive updates to this file.
- */
+/* blog.css */
 
 /* ------------------------------------------------------------------ fonts */
 
@@ -412,8 +407,8 @@ label {
     font-size: clamp(14px, 2vw, 18px);
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--accent-light);
-    animation: glow 1.4s ease-in-out infinite alternate;
+    /* color: var(--accent-light);
+    animation: glow 1.4s ease-in-out infinite alternate; */
 }
 
 .pronounce {
@@ -431,9 +426,9 @@ label {
     align-items: stretch;
     max-width: 1160px;
     margin: 0 auto;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    font-family: var(--font-menu);
+    border-top: 1px solid #4b66ff;
+    border-bottom: 1px solid #4b66ff;
+    font-family: var(--font-bold);
 }
 
 .main-menu a {
@@ -442,7 +437,7 @@ label {
     padding: 12px 16px;
     color: #fff;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     letter-spacing: 1px;
     text-transform: uppercase;
     text-decoration: none;
