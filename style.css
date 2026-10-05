@@ -31,6 +31,7 @@
 }
 body {
     margin: 0;
+    overflow: hidden;
 
     display: flex;
     justify-content: center; 
@@ -482,8 +483,12 @@ a:active {
     }
 }
 
-/* @media (max-width: 500px) {
-    main {
-        scale: 2;
+@media (max-width: 674px) {
+    .info-overlay {
+        max-width: 87%;
     }
-} */
+    
+    .info-overlay.open {
+        max-width: 87%;
+    }
+}
