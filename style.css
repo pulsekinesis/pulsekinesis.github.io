@@ -93,8 +93,7 @@ main.visible {
 }
 
 .btn-list {
-    width: 100%;
-    max-width: 500px;   /* was: width: 500px */
+    width: min(500px, 100vw - 32px);
     justify-content: center;
     display: flex;
 }
