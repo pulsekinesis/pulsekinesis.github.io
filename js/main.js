@@ -29,6 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return loadedScripts[src];
     }
 
+    function preventDefault(e) {
+        e.preventDefault();
+    }
+
     document.querySelectorAll("#info-btn").forEach((btn) => {
         // Hover: show this button's data-hover text
         btn.addEventListener("mouseenter", () => {
@@ -69,6 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
             open();
         });
     });
+
+    document.addEventListener('touchmove', preventDefault, { passive: false });
 
     closeBtn.addEventListener("click", close);
     infoBox.addEventListener("click", (e) => { if (e.target === infoBox) close(); });
