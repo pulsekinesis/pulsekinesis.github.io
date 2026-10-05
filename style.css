@@ -507,6 +507,10 @@ a:active {
         width: 75%;
     }
 
+    .background-info h1 {
+        text-align: center;
+    }
+    
     .content {
         margin-left: -13%;
         min-width: 0;
