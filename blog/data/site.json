@@ -1,0 +1,136 @@
+{
+  "title": "pulsekinesis",
+  "subtitle": "blog",
+  "tagline": "programmer & game designer",
+  "url": "https://pulsekinesis.com",
+  "author": "pulsekinesis",
+  "description": "Notes on programming, game design, retrocomputing, music and whatever else is on my mind.",
+  "recent_count": 6,
+  "categories": [
+    {
+      "id": "programming",
+      "label": "Programming"
+    },
+    {
+      "id": "game-design",
+      "label": "Game Design"
+    },
+    {
+      "id": "gaming",
+      "label": "Gaming"
+    },
+    {
+      "id": "retrocomputing",
+      "label": "Retrocomputing"
+    },
+    {
+      "id": "music",
+      "label": "Music"
+    },
+    {
+      "id": "language",
+      "label": "Language"
+    },
+    {
+      "id": "culture",
+      "label": "Culture"
+    },
+    {
+      "id": "thoughts",
+      "label": "Thoughts"
+    }
+  ],
+  "projects_title": "Highlighted Projects",
+  "projects": [
+    {
+      "name": "Guts & Blackpowder",
+      "description": "Programming, game design, models and UI. This is my main prokect.",
+      "url": "https://www.roblox.com/games/12334109280/",
+      "roblox_universe": 4342047058,
+      "image": "/images/logo.png"
+    },
+    {
+      "name": "Bombline",
+      "description": "Pre-alpha programming, plus a heavy hand in the game's art direction.",
+      "url": "https://www.roblox.com/games/10469988463/",
+      "roblox_universe": 3813107352,
+      "image": "/images/logo.png"
+    }
+  ],
+  "socials": [
+    {
+      "label": "Email",
+      "icon": "gmail",
+      "url": "mailto:pulsekinesis@gmail.com"
+    },
+    {
+      "label": "Discord",
+      "icon": "discord",
+      "copy": "pulsekinesis"
+    },
+    {
+      "label": "Roblox",
+      "icon": "roblox",
+      "url": "https://www.roblox.com/users/10207619/profile"
+    },
+    {
+      "label": "Twitter",
+      "icon": "x",
+      "url": "https://x.com/PULSEKINESIS"
+    },
+    {
+      "label": "YouTube",
+      "icon": "youtube",
+      "url": "https://www.youtube.com/@pulsekinesis"
+    },
+    {
+      "label": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/pulsekinesis"
+    }
+  ],
+  "blogroll": [],
+  "feedback": {
+    "endpoint": "https://formsubmit.co/pulsekinesis@gmail.com",
+    "subject": "New feedback from the pulsekinesis blog"
+  },
+  "subscribe": {
+    "email_form_action": "",
+    "email_field_name": "email",
+    "email_note": ""
+  },
+  "sidebar": [
+    {
+      "type": "about",
+      "title": "About",
+      "image": "/images/logo.png",
+      "markdown": "Hi, I'm **Keith**! I'm also known as **pulsekinesis**. I'm an independent programmer & game designer who's been active since 2014, and the CEO of **Paradise Manufacture**.\n\nThis is where I write about whatever I'm working on or thinking about.",
+      "html": "<p>Hi, I&#39;m <strong>Keith</strong>! I&#39;m also known as <strong>pulsekinesis</strong>. I&#39;m an independent programmer &amp; game designer who&#39;s been active since 2014, and the CEO of <strong>Paradise Manufacture</strong>.</p>\n<p>This is where I write about whatever I&#39;m working on or thinking about.</p>\n"
+    },
+    {
+      "type": "search",
+      "title": "Search"
+    },
+    {
+      "type": "categories",
+      "title": "Categories"
+    },
+    {
+      "type": "socials",
+      "title": "Elsewhere"
+    },
+    {
+      "type": "subscribe",
+      "title": "Subscribe"
+    },
+    {
+      "type": "blogroll",
+      "title": "Blogroll"
+    },
+    {
+      "type": "clock",
+      "title": "My Local Time",
+      "timezone": "America/Chicago"
+    }
+  ]
+}
