@@ -3,7 +3,7 @@
 <channel>
     <title>pulsekinesis blog · Gaming</title>
     <link>https://pulsekinesis.com/blog/</link>
-    <description>Notes on programming, game design, retrocomputing, music and whatever else is on my mind.</description>
+    <description>Notes on programming, game design, retro computing, music and whatever else is on my mind.</description>
     <language>en</language>
     <atom:link href="https://pulsekinesis.com/blog/feeds/gaming.xml" rel="self" type="application/rss+xml"/>
     <image>
@@ -11,7 +11,7 @@
         <title>pulsekinesis blog · Gaming</title>
         <link>https://pulsekinesis.com/blog/</link>
     </image>
-    <lastBuildDate>Mon, 05 Oct 2026 16:43:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 16:46:59 GMT</lastBuildDate>
 
 </channel>
 </rss>
