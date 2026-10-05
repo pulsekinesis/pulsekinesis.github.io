@@ -29,8 +29,10 @@
         --angle: 360deg;
     } 
 }
+
 body {
     margin: 0;
+    overflow: hidden;
 
     display: flex;
     justify-content: center; 
