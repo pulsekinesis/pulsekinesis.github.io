@@ -63,6 +63,8 @@ document.addEventListener("infobox:open", (e) => {
     ]
 
     const container = document.getElementById('gallery-container-main');
+    if (container == null) return;
+    
     const container2 = document.getElementById('gallery-container-old');
     const infoBox = document.getElementById('infobox');
     const descBox = document.getElementById('desc');
