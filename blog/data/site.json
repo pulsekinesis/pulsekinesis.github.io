@@ -89,7 +89,13 @@
       "url": "https://github.com/pulsekinesis"
     }
   ],
-  "blogroll": [],
+  "blogroll": [
+    {
+      "name": "U.S. Graphics Company",
+      "url": "https://x.com/usgraphics",
+      "description": "Really good place for studying old school graphics."
+    }
+  ],
   "feedback": {
     "endpoint": "https://formsubmit.co/pulsekinesis@gmail.com",
     "subject": "New feedback from the pulsekinesis blog"
