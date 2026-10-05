@@ -1,91 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feedback · pulsekinesis</title>
-<meta name="description" content="Send feedback, questions or bug reports to pulsekinesis.">
-<link rel="canonical" href="https://pulsekinesis.com/blog/feedback/">
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-<link rel="alternate" type="application/rss+xml" title="pulsekinesis blog" href="/blog/feed.xml">
-<meta property="og:title" content="Feedback · pulsekinesis">
-<meta property="og:image" content="https://pulsekinesis.com/images/logo.png">
-<meta name="theme-color" content="#0008FF">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/blog/assets/blog.css?v=1">
-<link rel="stylesheet" href="/blog/assets/custom.css?v=1">
-</head>
-<body class="blog" data-page="feedback">
-<canvas id="bg-canvas" class="backg-canvas" aria-hidden="true"></canvas>
-<header class="site-header">
-    <a class="brand" href="/blog/"><span class="website-title">pulsekinesis</span><span class="brand-sub">blog</span></a>
-    <p class="pronounce">(PULS·kih·NEE·sis)</p>
-    <nav class="main-menu" aria-label="Main">
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/blog/archive/">Archive</a>
-        <a href="/blog/feedback/" class="active" aria-current="page">Feedback</a>
-        <a class="menu-rss" href="/blog/feed.xml" title="RSS feed" aria-label="RSS feed"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="5" cy="19" r="2.2"/><path d="M3 10.5A10.5 10.5 0 0 1 13.5 21h-3A7.5 7.5 0 0 0 3 13.5z"/><path d="M3 4a17 17 0 0 1 17 17h-3A14 14 0 0 0 3 7z"/></svg></a>
-    </nav>
-</header>
-<div class="layout">
-    <main class="content" id="main">
-        <section class="form-panel panel">
-            <h1>Feedback</h1>
-            <p>Questions, ideas, corrections, or just want to say hi? This goes straight to my inbox. Leave an email if you'd like a reply.</p>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Feedback · pulsekinesis</title>
+        <meta name="description" content="Send feedback, questions or bug reports to pulsekinesis.">
+        <link rel="canonical" href="https://pulsekinesis.com/blog/feedback/">
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+        <link rel="alternate" type="application/rss+xml" title="pulsekinesis blog" href="/blog/feed.xml">
+        <meta property="og:title" content="Feedback · pulsekinesis">
+        <meta property="og:image" content="https://pulsekinesis.com/images/logo.png">
+        <meta name="theme-color" content="#0008FF">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/blog/assets/blog.css?v=1">
+        <link rel="stylesheet" href="/blog/assets/custom.css?v=1">
+    </head>
 
-            <p class="notice" id="feedback-sent" hidden>Thanks! Your message was sent. I read everything, even if a reply takes a while.</p>
+    <body class="blog" data-page="feedback">
+        <canvas id="bg-canvas" class="backg-canvas" aria-hidden="true"></canvas>
 
-            <!-- Sent through FormSubmit (formsubmit.co), which forwards to the address in
-                 blog/data/site.json → feedback.endpoint. See blog/docs/customizing.md. -->
-            <form id="feedback-form" class="form-grid" method="POST" action="https://formsubmit.co/pulsekinesis@gmail.com">
-                <input type="hidden" name="_subject" value="New feedback from the blog">
-                <input type="hidden" name="_next" value="">
-                <input type="hidden" name="_template" value="table">
-                <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <header class="site-header">
+            <a class="brand" href="/blog/"><span class="website-title">pulsekinesis</span><span class="brand-sub">blog</span></a>
+            <p class="pronounce">(PULS·kih·NEE·sis)</p>
+            <nav class="main-menu" aria-label="Main">
+                <a href="/">Home</a>
+                <a href="/blog/">Blog</a>
+                <a href="/blog/archive/">Archive</a>
+                <a href="/blog/feedback/" class="active" aria-current="page">Feedback</a>
+                <a class="menu-rss" href="/blog/feed.xml" title="RSS feed" aria-label="RSS feed"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="5" cy="19" r="2.2"/><path d="M3 10.5A10.5 10.5 0 0 1 13.5 21h-3A7.5 7.5 0 0 0 3 13.5z"/><path d="M3 4a17 17 0 0 1 17 17h-3A14 14 0 0 0 3 7z"/></svg></a>
+            </nav>
+        </header>
 
-                <div class="field">
-                    <label for="fb-name">Name</label>
-                    <input id="fb-name" type="text" name="name" autocomplete="name" placeholder="optional">
-                </div>
-                <div class="field">
-                    <label for="fb-email">Email</label>
-                    <input id="fb-email" type="email" name="email" autocomplete="email" placeholder="optional, for replies">
-                </div>
-                <div class="field">
-                    <label for="fb-topic">Topic</label>
-                    <select id="fb-topic" name="topic">
-                        <option>General</option>
-                        <option>A blog post</option>
-                        <option>A game / project</option>
-                        <option>Business inquiry</option>
-                        <option>Bug on this site</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label for="fb-post">Which post?</label>
-                    <input id="fb-post" type="text" name="post" placeholder="optional">
-                </div>
-                <div class="field full">
-                    <label for="fb-message">Message</label>
-                    <textarea id="fb-message" name="message" required minlength="5" placeholder="Write away…"></textarea>
-                    <span class="hint">Please don't send moderation appeals for any game here. Contact that game's official community server instead.</span>
-                </div>
-                <div class="field full">
-                    <button class="btn" type="submit">Send message</button>
-                </div>
-            </form>
-        </section>
-    </main>
-    <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
-</div>
-<footer class="site-footer">
-    <hr class="dots">
-    <p>pulsekinesis · <a href="/">portfolio</a> · <a href="/blog/feed.xml">rss</a> · <a href="/blog/feedback/">feedback</a></p>
-</footer>
-<script src="/blog/assets/custom.js?v=1" defer></script>
-<script type="module" src="/blog/assets/blog.js?v=1"></script>
-</body>
+        <div class="layout">
+            <main class="content" id="main">
+                <section class="form-panel panel">
+                    <h1>Feedback</h1>
+                    <p>Questions, ideas, corrections, or just want to say hi? This goes straight to my inbox. Leave an email if you'd like a reply.</p>
+                    <p>Please understand that I <u><b>WILL</b></u> ignore anything regarding moderation for any game. If you wish to resolve any issues regarding any in-game moderation action, please contact the moderators from the official community server.</p>
+
+                    <p class="notice" id="feedback-sent" hidden>Thanks! Your message was sent. I read everything, even if a reply takes a while.</p>
+
+                    <!-- Sent through FormSubmit (formsubmit.co), which forwards to the address in
+                        blog/data/site.json → feedback.endpoint. See blog/docs/customizing.md. -->
+                    <form id="feedback-form" class="form-grid" method="POST" action="https://formsubmit.co/pulsekinesis@gmail.com">
+                        <input type="hidden" name="_subject" value="New feedback from the blog">
+                        <input type="hidden" name="_next" value="">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                        <div class="field">
+                            <label for="fb-name">Name</label>
+                            <input id="fb-name" type="text" name="name" autocomplete="name" placeholder="optional">
+                        </div>
+                        <div class="field">
+                            <label for="fb-email">Email</label>
+                            <input id="fb-email" type="email" name="email" autocomplete="email" placeholder="optional, for replies">
+                        </div>
+                        <div class="field">
+                            <label for="fb-topic">Topic</label>
+                            <select id="fb-topic" name="topic">
+                                <option>General</option>
+                                <option>A blog post</option>
+                                <option>A game / project</option>
+                                <option>Business inquiry</option>
+                                <option>Bug on this site</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="fb-post">Which post?</label>
+                            <input id="fb-post" type="text" name="post" placeholder="optional">
+                        </div>
+                        <div class="field full">
+                            <label for="fb-message">Message</label>
+                            <textarea id="fb-message" name="message" required minlength="5" placeholder="Write away…"></textarea>
+                            <span class="hint">Please don't send moderation appeals for any game here. Contact that game's official community server instead.</span>
+                        </div>
+                        <div class="field full">
+                            <button class="btn" type="submit">Send message</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+            <aside class="sidebar" id="sidebar" aria-label="Sidebar"></aside>
+        </div>
+        
+        <footer class="site-footer">
+            <hr class="dots">
+            <p>pulsekinesis · <a href="/">portfolio</a> · <a href="/blog/feed.xml">rss</a> · <a href="/blog/feedback/">feedback</a></p>
+        </footer>
+
+        <script src="/blog/assets/custom.js?v=1" defer></script>
+        <script type="module" src="/blog/assets/blog.js?v=1"></script>
+    </body>
 </html>
